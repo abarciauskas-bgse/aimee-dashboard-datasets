@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - initialize-repo
+      - initialize-repo # will remove this repo once it's ready to be merged
 
 jobs:
   run-metadata-generator:
