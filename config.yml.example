@@ -1,0 +1,9 @@
+STAGE: dev
+# UPDATE ME: primary bucket
+BUCKET: data-bucket
+
+DATASET_METADATA_FILENAME: dev-dataset-metadata.json
+STAC_API_URL: https://earth-search.aws.element84.com/v0
+DATASETS:
+  STATIC:
+  - MOD13A1.006.json
