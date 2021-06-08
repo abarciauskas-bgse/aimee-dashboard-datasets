@@ -17,7 +17,7 @@ config = yaml.load(open(f"{BASE_PATH}/config.yml", 'r'), Loader=yaml.FullLoader)
 DATASETS_JSON_FILEPATH = os.path.join(BASE_PATH, "datasets")
 
 DATASET_METADATA_FILENAME = os.environ.get("DATASET_METADATA_FILENAME", config.get('DATASET_METADATA_FILENAME'))
-STAC_API_URL = config['STAC_API_URL']
+STAC_API_URL = config.get('STAC_API_URL', None)
 
 s3 = boto3.resource("s3")
 bucket = s3.create_bucket(Bucket=os.environ.get("DATA_BUCKET_NAME", config.get('BUCKET')))
