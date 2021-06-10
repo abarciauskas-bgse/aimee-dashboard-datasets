@@ -1,0 +1,35 @@
+{
+    "id": "ATL08",
+    "name": "ATL08 ICESat-2",
+    "type": "vector",
+    "is_periodic": false,
+    "time_unit": "day",
+    "source": {
+        "type": "vector",
+        "layer_type": "circle",
+        "source_layer": "atl08",
+        "source_url": "{vector_tileserver_url}/data/atl08.json",
+        "tiles": [
+            "{vector_tileserver_url}/data/atl08/{z}/{x}/{y}.pbf"
+        ]
+    },
+    "info": "ATL08 data",
+    "paint": {
+        "circle-radius": 2,
+        "circle-opacity": 0.7,
+        "circle-color": {
+            "property": "Z",
+            "stops": [
+                [
+                    0,
+                    "#fff"
+                ],
+                [
+                    1000,
+                    "#ffa500"
+                ]
+            ]
+        },
+        "circle-stroke-color": "orange"
+    }
+}
