@@ -3,13 +3,18 @@ on:
   push:
     branches:
       - main
-      - add-atl08 # will remove this repo once it's ready to be merged
+      - aimee-deploy
 
 jobs:
   run-metadata-generator:
     runs-on: ubuntu-latest
   
     steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
       - name: Configure AWS credentials from MAAP AWS Account
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -31,4 +36,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: Execute the metadata generator script
+        env:
+          STAGE: ${{ steps.extract_branch.outputs.branch }}
         run: python -m dataset_metadata_generator.src.main
