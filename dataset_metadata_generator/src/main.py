@@ -16,8 +16,8 @@ config = yaml.load(open(f"{BASE_PATH}/config.yml", 'r'), Loader=yaml.FullLoader)
 
 DATASETS_JSON_FILEPATH = os.path.join(BASE_PATH, "datasets")
 
-DATASET_METADATA_FILENAME = os.environ.get("DATASET_METADATA_FILENAME", config.get('DATASET_METADATA_FILENAME'))
-STAC_API_URL = config['STAC_API_URL']
+DATASET_METADATA_FILENAME = f"{os.environ.get('STAGE')}-{os.environ.get('DATASET_METADATA_FILENAME', config.get('DATASET_METADATA_FILENAME'))}"
+STAC_API_URL = config.get('STAC_API_URL', None)
 
 s3 = boto3.resource("s3")
 bucket = s3.create_bucket(Bucket=os.environ.get("DATA_BUCKET_NAME", config.get('BUCKET')))
@@ -36,7 +36,7 @@ def handler():
     """
 
     # TODO: defined TypedDicts for these!
-    listed_datasets = config['DATASETS']['STATIC']
+    listed_datasets = config['DATASETS']
     datasets = _gather_json_data(DATASETS_JSON_FILEPATH, filter=listed_datasets)
     if STAC_API_URL:
         stac_datasets = _fetch_stac_items()
