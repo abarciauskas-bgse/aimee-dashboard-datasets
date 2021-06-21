@@ -13,7 +13,7 @@
   "source": {
       "type": "raster",
       "tiles": [
-          "{titiler_server_url}/{z}/{x}/{y}@1x?url=https://modis-vi-nasa.s3.amazonaws.com/MOD13A1.006/{date}.tif&resampling_method=nearest&bidx=1&rescale=-0.20000000298023224%2C0.9945999979972839&color_map=gist_earth"
+          "{titiler_server_url}/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?url=https://modis-vi-nasa.s3.amazonaws.com/MOD13A1.006/{date}.tif&resampling_method=nearest&bidx=1&rescale=-0.20000000298023224%2C0.9945999979972839&color_map=gist_earth"
       ]
   },
   "legend": {
